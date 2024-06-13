@@ -1,6 +1,7 @@
 export * from './capacitor';
 export * from './dialog/dialog.service';
 export * from './error';
+export * from './file';
 export * from './live-update/live-update.service';
 export * from './mode/mode.service';
 export * from './platform/platform.service';

@@ -72,6 +72,11 @@
           {
             "allowList": {
               "changeDetectorRef": true
+            },
+            "replacements": {
+              "params": {
+                "parameters": false
+              }
             }
           }
         ]

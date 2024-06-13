@@ -37,18 +37,20 @@ export class RouterService {
     return this.navigateForward(['/home'], options);
   }
 
-  public navigateToTaskListPage(options?: NavigationOptions): Promise<boolean> {
-    return this.navigateForward(['/tasks'], options);
+  public navigateToVehicleListPage(
+    options?: NavigationOptions,
+  ): Promise<boolean> {
+    return this.navigateForward(['/vehicles'], options);
   }
 
-  public async navigateToTaskUpsertPage(
+  public async navigateToVehicleUpsertPage(
     taskId?: string,
     options?: NavigationOptions,
   ): Promise<boolean> {
     if (taskId) {
-      return this.navigateForward(['tasks', taskId], options);
+      return this.navigateForward(['vehicles', taskId], options);
     } else {
-      return this.navigateForward(['tasks', 'create'], options);
+      return this.navigateForward(['vehicles', 'create'], options);
     }
   }
 

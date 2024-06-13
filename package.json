@@ -40,6 +40,7 @@
     "@capacitor/preferences": "6.0.0",
     "@capacitor/splash-screen": "6.0.0",
     "@capacitor/status-bar": "6.0.0",
+    "@capawesome/capacitor-file-picker": "6.0.0",
     "@capawesome/capacitor-live-update": "6.0.7",
     "@ionic/angular": "8.2.0",
     "@ionic/core": "8.2.0",

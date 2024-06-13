@@ -12,7 +12,8 @@ export const environment = {
   build: {
     changeset: '0000000',
   },
-  localStorageKeyPrefix: 'ionstarter_',
+  apiBaseUrl: 'https://api.raildepot.app',
+  localStorageKeyPrefix: 'raildepot_',
   privacyPolicyUrl: '',
   termsOfServiceUrl: '',
   feedbackEmailAddress: '',

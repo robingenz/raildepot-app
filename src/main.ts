@@ -64,6 +64,8 @@ bootstrapApplication(AppComponent, {
       defaultOptions: {
         queries: {
           refetchOnWindowFocus: false,
+          retry: false,
+          throwOnError: true,
         },
       },
     }),

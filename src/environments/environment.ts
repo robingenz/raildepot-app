@@ -13,12 +13,12 @@ export const environment = {
     changeset: '0000000',
   },
   localStorageKeyPrefix: 'ionstarter_',
-  privacyPolicyUrl: 'https://ionstarter.dev/legal/privacy',
-  termsOfServiceUrl: 'https://ionstarter.dev/legal/terms',
-  feedbackEmailAddress: 'support@ionstarter.dev',
+  privacyPolicyUrl: '',
+  termsOfServiceUrl: '',
+  feedbackEmailAddress: '',
   revenueCatApiKey: {
-    android: 'goog_wEebfhHqfNeEZbVOYGQYmUlXwyv',
-    ios: 'appl_fNSxHjJrYSaUSvnqDQpuBrobTKF',
+    android: '',
+    ios: '',
   },
 };
 

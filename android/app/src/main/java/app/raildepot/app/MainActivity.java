@@ -1,4 +1,4 @@
-package dev.ionstarter.angularsqlite.demo;
+package app.raildepot.app;
 
 import com.getcapacitor.BridgeActivity;
 

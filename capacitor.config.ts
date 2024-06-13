@@ -14,9 +14,9 @@ const config: CapacitorConfig = {
       androidIsEncryption: false,
     },
     LiveUpdate: {
-      appId: 'a89c8f9a-7c7e-4867-9db2-68c5795bd4b4',
+      appId: '',
       autoDeleteBundles: true,
-      enabled: true,
+      enabled: false,
     },
     SplashScreen: {
       launchAutoHide: false,

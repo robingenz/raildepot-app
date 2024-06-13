@@ -1,0 +1,11 @@
+:host-context(body:not(.ion-palette-dark)) {
+  ion-content {
+    --background: var(--ion-color-light);
+  }
+}
+
+.conditions-text {
+  margin: 24px 0px;
+  font-size: 12px;
+  text-align: center;
+}

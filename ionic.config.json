@@ -1,0 +1,7 @@
+{
+  "name": "angular-sqlite-starter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

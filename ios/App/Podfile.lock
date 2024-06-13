@@ -1,0 +1,119 @@
+PODS:
+  - Alamofire (5.9.1)
+  - Capacitor (6.0.0):
+    - CapacitorCordova
+  - CapacitorApp (6.0.0):
+    - Capacitor
+  - CapacitorBrowser (6.0.0):
+    - Capacitor
+  - CapacitorCommunitySqlite (6.0.0-alpha.1):
+    - Capacitor
+    - SQLCipher
+    - ZIPFoundation
+  - CapacitorCordova (6.0.0)
+  - CapacitorFilesystem (6.0.0):
+    - Capacitor
+  - CapacitorHaptics (6.0.0):
+    - Capacitor
+  - CapacitorKeyboard (6.0.0):
+    - Capacitor
+  - CapacitorPreferences (6.0.0):
+    - Capacitor
+  - CapacitorSplashScreen (6.0.0):
+    - Capacitor
+  - CapacitorStatusBar (6.0.0):
+    - Capacitor
+  - CapawesomeCapacitorLiveUpdate (6.0.7):
+    - Alamofire (~> 5.9.0)
+    - Capacitor
+    - SSZipArchive (~> 2.2)
+  - PurchasesHybridCommon (10.4.1):
+    - RevenueCat (= 4.40.1)
+  - RevenueCat (4.40.1)
+  - RevenuecatPurchasesCapacitor (8.0.0-beta.1):
+    - Capacitor
+    - PurchasesHybridCommon (= 10.4.1)
+  - SQLCipher (4.5.7):
+    - SQLCipher/standard (= 4.5.7)
+  - SQLCipher/common (4.5.7)
+  - SQLCipher/standard (4.5.7):
+    - SQLCipher/common
+  - SSZipArchive (2.4.3)
+  - ZIPFoundation (0.9.19)
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
+  - "CapacitorCommunitySqlite (from `../../node_modules/@capacitor-community/sqlite`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
+  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
+  - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
+  - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
+  - "CapawesomeCapacitorLiveUpdate (from `../../node_modules/@capawesome/capacitor-live-update`)"
+  - "RevenuecatPurchasesCapacitor (from `../../node_modules/@revenuecat/purchases-capacitor`)"
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - PurchasesHybridCommon
+    - RevenueCat
+    - SQLCipher
+    - SSZipArchive
+    - ZIPFoundation
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorBrowser:
+    :path: "../../node_modules/@capacitor/browser"
+  CapacitorCommunitySqlite:
+    :path: "../../node_modules/@capacitor-community/sqlite"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorFilesystem:
+    :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorHaptics:
+    :path: "../../node_modules/@capacitor/haptics"
+  CapacitorKeyboard:
+    :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorPreferences:
+    :path: "../../node_modules/@capacitor/preferences"
+  CapacitorSplashScreen:
+    :path: "../../node_modules/@capacitor/splash-screen"
+  CapacitorStatusBar:
+    :path: "../../node_modules/@capacitor/status-bar"
+  CapawesomeCapacitorLiveUpdate:
+    :path: "../../node_modules/@capawesome/capacitor-live-update"
+  RevenuecatPurchasesCapacitor:
+    :path: "../../node_modules/@revenuecat/purchases-capacitor"
+
+SPEC CHECKSUMS:
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  Capacitor: 559d073c4ca6c27f8e7002c807eea94c3ba435a9
+  CapacitorApp: 9d53aec7101f7b030a950c5bdc4df8612576b279
+  CapacitorBrowser: 7e1e2cdbb3e372f09f0bad0c4c21a6d187b679ad
+  CapacitorCommunitySqlite: e1e97b8691802cec1fe38a389f677d40651b968a
+  CapacitorCordova: 8c4bfdf69368512e85b1d8b724dd7546abeb30af
+  CapacitorFilesystem: 60e59ba274c234a979e7a3be2552feaadcee4263
+  CapacitorHaptics: 9ebc9363f0e9b8eb4295088a0b474530acf1859b
+  CapacitorKeyboard: deacbd09d8d1029c3681197fb05d206b721d5f73
+  CapacitorPreferences: c9b839a80baa72e4ed4bdb117618e1950d3046b5
+  CapacitorSplashScreen: 5431ab8d19c1c6e95777d53bfaa7a36a6c3d94c7
+  CapacitorStatusBar: 2e4369f99166125435641b1908d05f561eaba6f6
+  CapawesomeCapacitorLiveUpdate: fa5ed748f93feff020a9a4104cf088297cf434a8
+  PurchasesHybridCommon: 596ac8a54be4e03cc1398b012bd9cdf134111b70
+  RevenueCat: 9f6b84da3f00953b2eeaaa6fc4710c1d280a5710
+  RevenuecatPurchasesCapacitor: 95fe52e08804d3e2bfe391cc4467e49dac5a1d8a
+  SQLCipher: 5e6bfb47323635c8b657b1b27d25c5f1baf63bf5
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
+  ZIPFoundation: b8c29ea7ae353b309bc810586181fd073cb3312c
+
+PODFILE CHECKSUM: 52c70c34d19ef9091805c672261ebf158e2a17c1
+
+COCOAPODS: 1.15.2

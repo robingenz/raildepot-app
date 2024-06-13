@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{
+      "domain.settings.component.purchasesModal.title" | transloco
+    }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onDismissModal()">
+        {{
+          "domain.settings.component.purchasesModal.button.close" | transloco
+        }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <h1>
+      {{ "domain.settings.component.purchasesModal.label.title" | transloco }}
+    </h1>
+    <p class="ion-padding">
+      {{
+        "domain.settings.component.purchasesModal.label.description" | transloco
+      }}
+    </p>
+  </div>
+  <ion-list [inset]="true">
+    @if (offerings().data?.current?.monthly; as monthlyOffering) {
+      <ion-item>
+        <ion-label
+          ><h3>{{ monthlyOffering.product.title }}</h3>
+          <p>{{ monthlyOffering.product.description }}</p></ion-label
+        >
+        <ion-button (click)="onPurchasePackage(monthlyOffering)">{{
+          monthlyOffering.product.priceString
+        }}</ion-button>
+      </ion-item>
+    }
+    @if (offerings().data?.current?.annual; as annualOffering) {
+      <ion-item>
+        <ion-label
+          ><h3>{{ annualOffering.product.title }}</h3>
+          <p>{{ annualOffering.product.description }}</p></ion-label
+        >
+        <ion-button (click)="onPurchasePackage(annualOffering)">{{
+          annualOffering.product.priceString
+        }}</ion-button>
+      </ion-item>
+    }
+    @if (offerings().data?.current?.lifetime; as lifetimeOffering) {
+      <ion-item>
+        <ion-label
+          ><h3>{{ lifetimeOffering.product.title }}</h3>
+          <p>{{ lifetimeOffering.product.description }}</p></ion-label
+        >
+        <ion-button (click)="onPurchasePackage(lifetimeOffering)">{{
+          lifetimeOffering.product.priceString
+        }}</ion-button>
+      </ion-item>
+    }
+  </ion-list>
+  <div class="conditions-text">
+    <a (click)="onRestorePurchases()">{{
+      "domain.settings.component.purchasesModal.button.restorePurchase"
+        | transloco
+    }}</a>
+  </div>
+</ion-content>

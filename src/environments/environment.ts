@@ -12,7 +12,7 @@ export const environment = {
   build: {
     changeset: '0000000',
   },
-  apiBaseUrl: 'https://api.raildepot.app',
+  apiBaseUrl: 'http://api.raildepot.local',
   localStorageKeyPrefix: 'raildepot_',
   privacyPolicyUrl: '',
   termsOfServiceUrl: '',

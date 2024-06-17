@@ -97,21 +97,19 @@
       }}</ion-label>
     </ion-item>
   </ion-list>
-  @if (feedbackEmailAddress) {
-    <ion-list [inset]="true">
-      <ion-item
-        button
-        [detail]="true"
-        [lines]="'none'"
-        (click)="onSubmitFeedback(feedbackEmailAddress)"
-      >
-        <ion-icon name="chatbox" slot="start"></ion-icon>
-        <ion-label>{{
-          "domain.settings.page.settings.button.feedback" | transloco
-        }}</ion-label>
-      </ion-item>
-    </ion-list>
-  }
+  <ion-list [inset]="true">
+    <ion-item
+      button
+      [detail]="true"
+      [lines]="'none'"
+      (click)="onSubmitFeedback()"
+    >
+      <ion-icon name="chatbox" slot="start"></ion-icon>
+      <ion-label>{{
+        "domain.settings.page.settings.button.feedback" | transloco
+      }}</ion-label>
+    </ion-item>
+  </ion-list>
   <ion-list [inset]="true">
     <ion-item
       [button]="isNative$ | async"

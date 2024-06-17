@@ -73,9 +73,15 @@
         "home": {
           "card": {
             "notice": {
-              "title": "Demo",
-              "message": "Platzieren Sie Ihren Inhalt hier..."
+              "title": "Hinweis",
+              "message": "Diese App befindet sich noch in der Entwicklung. Falls du einen Fehler findest oder Ideen für neue Funktionen hast, würden wir uns sehr über dein Feedback freuen.",
+              "button": {
+                "feedback": "Feedback senden"
+              }
             }
+          },
+          "button": {
+            "addVehicle": "Fahrzeug hinzufügen"
           },
           "title": "Startseite"
         }

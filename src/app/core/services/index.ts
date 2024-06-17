@@ -1,6 +1,7 @@
 export * from './capacitor';
 export * from './dialog/dialog.service';
 export * from './error';
+export * from './feedback/feedback.service';
 export * from './file';
 export * from './firebase';
 export * from './live-update/live-update.service';

@@ -1,0 +1,17 @@
+:host-context(body:not(.dark)) {
+  ion-content {
+    --background: var(--ion-color-light);
+  }
+}
+
+:host-context(.ios body:not(.dark)) {
+  ion-toolbar {
+    --background: var(--ion-color-light);
+  }
+}
+
+ion-card-content {
+  border-width: 0px 0px 0.55px 0px;
+  border-style: solid;
+  border-color: var(--ion-color-step-250, #c8c7cc);
+}

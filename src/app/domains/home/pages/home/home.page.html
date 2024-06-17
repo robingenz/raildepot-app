@@ -19,9 +19,23 @@
       }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <!-- <p>
+        Willkommen bei RailDepot - der App für die Verwaltung deiner Modellbahn.
+      </p> -->
       <p>
         {{ "domain.home.page.home.card.notice.message" | transloco }}
       </p>
     </ion-card-content>
+    <ion-item
+      button
+      [detail]="true"
+      [lines]="'none'"
+      (click)="onSendFeedback()"
+    >
+      <ion-icon name="chatbox" slot="start"></ion-icon>
+      <ion-label>{{
+        "domain.home.page.home.card.notice.button.feedback" | transloco
+      }}</ion-label>
+    </ion-item>
   </ion-card>
 </ion-content>

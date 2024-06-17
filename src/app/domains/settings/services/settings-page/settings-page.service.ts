@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   DialogService,
+  FeedbackService,
   FirebaseAuthenticationService,
   LiveUpdateService,
   ModeService,
@@ -10,7 +11,6 @@ import {
   ThemeService,
 } from '@app/core';
 import { Mode, Theme } from '@app/store';
-import { environment } from '@env/environment';
 import { TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
 import { PurchasesModalComponent } from '../../components';
@@ -30,6 +30,7 @@ export class SettingsPageService {
     private readonly liveUpdateService: LiveUpdateService,
     private readonly routerService: RouterService,
     private readonly firebaseAuthenticationService: FirebaseAuthenticationService,
+    private readonly feedbackService: FeedbackService,
   ) {}
 
   public get hasActiveEntitlement$(): Observable<boolean> {
@@ -248,29 +249,8 @@ export class SettingsPageService {
     });
   }
 
-  public async submitFeedback(email: string): Promise<void> {
-    const subject = this.translocoService.translate(
-      'domain.settings.dialog.feedback.subject',
-    );
-    const body1 = this.translocoService.translate(
-      'domain.settings.dialog.feedback.body1',
-    );
-    const body2 = this.translocoService.translate(
-      'domain.settings.dialog.feedback.body2',
-    );
-    const version = `${environment.version.major}.${environment.version.minor}.${environment.version.patch}`;
-    const changeset = environment.build.changeset;
-    const language = this.translocoService.getActiveLang();
-    const platform = this.platformService.getPlatform();
-
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body1}%0D%0A
-      %0D%0A
-version: ${version}%0D%0A
-changeset: ${changeset}%0D%0A
-language: ${language}%0D%0A
-platform: ${platform}%0D%0A
-%0D%0A
-${body2}%0D%0A%0D%0A`;
+  public submitFeedback(): void {
+    this.feedbackService.sendFeedback();
   }
 
   private async checkForUpdate(): Promise<void> {

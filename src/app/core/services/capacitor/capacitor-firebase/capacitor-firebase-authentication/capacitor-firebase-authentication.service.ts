@@ -58,7 +58,7 @@ export class CapacitorFirebaseAuthenticationService {
     return FirebaseAuthentication.getCurrentUser();
   }
 
-  public getIdToken(options: GetIdTokenOptions): Promise<GetIdTokenResult> {
+  public getIdToken(options?: GetIdTokenOptions): Promise<GetIdTokenResult> {
     return FirebaseAuthentication.getIdToken(options);
   }
 

@@ -58,7 +58,6 @@ export const settingsPageSelector = 'app-settings';
 })
 export class SettingsPage {
   public readonly changeset = environment.build.changeset;
-  public readonly feedbackEmailAddress = environment.feedbackEmailAddress;
   public readonly hasActiveEntitlement$ =
     this.settingsPageService.hasActiveEntitlement$;
   public readonly isNative$ = this.settingsPageService.isNative$;
@@ -122,7 +121,7 @@ export class SettingsPage {
     await this.settingsPageService.presentSignOutAlert();
   }
 
-  public onSubmitFeedback(email: string): Promise<void> {
-    return this.settingsPageService.submitFeedback(email);
+  public onSubmitFeedback(): void {
+    this.settingsPageService.submitFeedback();
   }
 }

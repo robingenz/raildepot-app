@@ -154,7 +154,7 @@ export class FirebaseAuthenticationService {
     return this.capacitorFirebaseAuthenticationService.signOut();
   }
 
-  public getIdToken(options: GetIdTokenOptions): Promise<GetIdTokenResult> {
+  public getIdToken(options?: GetIdTokenOptions): Promise<GetIdTokenResult> {
     return this.capacitorFirebaseAuthenticationService.getIdToken(options);
   }
 

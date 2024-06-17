@@ -28,6 +28,8 @@ import {
   RefresherCustomEvent,
 } from '@ionic/angular/standalone';
 import { TranslocoPipe } from '@jsverse/transloco';
+import { addIcons } from 'ionicons';
+import { add } from 'ionicons/icons';
 import { VehicleCategoryPipe } from '../../pipes';
 import { VehicleListPageService } from '../../services';
 
@@ -72,9 +74,9 @@ export class VehicleListPageComponent {
     limit: this.numberOfVehiclesPerPage,
   }).result;
 
-  constructor(
-    private readonly vehicleListPageService: VehicleListPageService,
-  ) {}
+  constructor(private readonly vehicleListPageService: VehicleListPageService) {
+    addIcons({ add });
+  }
 
   public async onIonRefresh(event: RefresherCustomEvent): Promise<void> {
     try {

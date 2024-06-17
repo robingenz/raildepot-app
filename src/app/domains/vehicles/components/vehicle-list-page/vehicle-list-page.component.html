@@ -1,28 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{ "vehicles.page.list.title" | transloco }}</ion-title>
+    <ion-title>{{ "domain.vehicles.page.list.title" | transloco }}</ion-title>
   </ion-toolbar>
-  <ion-toolbar appModeMd>
-    <!-- <ion-searchbar
-      [placeholder]="'vehicles.page.list.label.search' | transloco"
+  <!-- <ion-toolbar appModeMd>
+    <ion-searchbar
+      [placeholder]="'domain.vehicles.page.list.label.search' | transloco"
       (ionChange)="onIonSearchbarChange($any($event))"
-    ></ion-searchbar> -->
-  </ion-toolbar>
+    ></ion-searchbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{
-        "vehicles.page.list.title" | transloco
+        "domain.vehicles.page.list.title" | transloco
       }}</ion-title>
     </ion-toolbar>
-    <ion-toolbar>
-      <!-- <ion-searchbar
-        [placeholder]="'vehicles.page.list.label.search' | transloco"
+    <!-- <ion-toolbar>
+      <ion-searchbar
+        [placeholder]="'domain.vehicles.page.list.label.search' | transloco"
         (ionChange)="onIonSearchbarChange($any($event))"
-      ></ion-searchbar> -->
-    </ion-toolbar>
+      ></ion-searchbar>
+    </ion-toolbar> -->
   </ion-header>
   @if (vehicles().isLoading) {
     <ion-list>
@@ -67,7 +67,7 @@
               >
                 <ion-icon slot="start" name="trash"></ion-icon
                 >{{
-                  "vehicles.page.list.button.delete" | transloco
+                  "domain.vehicles.page.list.button.delete" | transloco
                 }}</ion-item-option
               >
             </ion-item-options>

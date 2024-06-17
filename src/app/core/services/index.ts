@@ -8,5 +8,4 @@ export * from './platform/platform.service';
 export * from './purchases/purchases.service';
 export * from './router/router.service';
 export * from './splash-screen/splash-screen.service';
-export * from './sqlite/sqlite.service';
 export * from './theme/theme.service';

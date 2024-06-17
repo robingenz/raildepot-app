@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { File, UploadOptions, UploadResult } from '@app/core';
+import { File } from '@app/core';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class VehicleUpsertPageService {
     throw new Error('Method not implemented.');
   }
 
-  public uploadFile(options: UploadOptions): Promise<UploadResult> {
-    throw new Error('Method not implemented.');
-  }
+  // public uploadFile(options: UploadOptions): Promise<UploadResult> {
+  //   throw new Error('Method not implemented.');
+  // }
 }

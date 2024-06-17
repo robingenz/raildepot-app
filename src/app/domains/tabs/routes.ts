@@ -11,8 +11,8 @@ export const routes: Routes = [
         loadChildren: () => import('../home/routes').then(m => m.routes),
       },
       {
-        path: 'tasks',
-        loadChildren: () => import('../tasks/routes').then(m => m.routes),
+        path: 'vehicles',
+        loadChildren: () => import('../vehicles/routes').then(m => m.routes),
       },
       {
         path: 'settings',

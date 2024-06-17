@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
 import { DialogService, RouterService } from '@app/core';
-import {
-  Vehicle,
-  VehicleService,
-} from '@app/domains/vehicles/services/vehicle/vehicle.service';
 import { TranslocoService } from '@jsverse/transloco';
 import {
   InfiniteData,
@@ -12,6 +8,8 @@ import {
   injectQueryClient,
 } from '@ngneat/query';
 import { Result } from '@ngneat/query/lib/types';
+import { Vehicle } from '../../interfaces';
+import { VehicleService } from '../vehicle/vehicle.service';
 
 @Injectable({
   providedIn: 'root',

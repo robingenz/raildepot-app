@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
+import { VehicleCategory } from '../../enums';
 
 @Pipe({
   name: 'vehicleCategory',

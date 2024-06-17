@@ -31,9 +31,11 @@ export interface VehicleDto {
   inventoryNumber: string | null;
   model: {
     articleNumber: string | null;
-    axlesTotal: number | null;
-    axlesPowered: number | null;
-    axlesTractioned: number | null;
+    axles: {
+      total: number | null;
+      powered: number | null;
+      tractioned: number | null;
+    };
     epoch: string | null;
     gauge: string | null;
     hasLight: boolean | null;

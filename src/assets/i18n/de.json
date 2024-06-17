@@ -140,33 +140,191 @@
         }
       }
     },
-    "tasks": {
+    "vehicles": {
+      "component": {
+        "digitalActionList": {
+          "button": {
+            "add": "Hinzufügen",
+            "dismiss": "Schließen"
+          },
+          "title": "Funktionen"
+        }
+      },
       "page": {
-        "taskList": {
+        "list": {
           "button": {
             "delete": "Löschen"
           },
-          "title": "Aufgaben"
+          "label": {
+            "search": "Suchen"
+          },
+          "title": "Fahrzeuge"
         },
-        "taskUpsert": {
+        "upsert": {
           "button": {
+            "back": "Zurück",
             "delete": "Löschen",
+            "image": {
+              "add": "Bild hinzufügen",
+              "delete": "Löschen",
+              "open": "Öffnen"
+            },
+            "purchase": {
+              "date": {
+                "cancel": "Abbrechen",
+                "delete": "Löschen",
+                "confirm": "Bestätigen"
+              }
+            },
             "save": "Speichern"
           },
           "label": {
-            "description": "Beschreibung",
-            "dueDate": "Fälligkeitsdatum",
-            "title": "Titel"
+            "inventoryNumber": "Inventarnummer",
+            "name": "Bezeichnung",
+            "additionalName": "Zusatzbezeichnung",
+            "category": "Kategorie",
+            "company": "Gesellschaft",
+            "classNumber": "Baureihennummer",
+            "digital": {
+              "address": "Adresse",
+              "decoder": "Decoder",
+              "actions": "Funktionen",
+              "interface": "Schnittstelle",
+              "title": "Digital"
+            },
+            "model": {
+              "articleNumber": "Artikelnummer",
+              "epoch": "Epoche",
+              "axles": "Achsen",
+              "gauge": "Spurweite",
+              "hasLight": "Beleuchtung",
+              "hasOriginalBox": "Originalverpackung",
+              "hasSmoke": "Rauch",
+              "hasSound": "Sound",
+              "isLimited": "Limitierte Auflage",
+              "length": "Länge (mm)",
+              "manufacturer": "Hersteller",
+              "serialNumber": "Seriennummer",
+              "title": "Modell",
+              "weight": "Gewicht (g)"
+            },
+            "note": "Notiz",
+            "purchase": {
+              "date": "Kaufdatum",
+              "invoice": "Rechnung",
+              "invoiceNumber": "Rechnungsnummer",
+              "location": "Kaufort",
+              "msrp": "UVP (€)",
+              "price": "Kaufpreis (€)",
+              "title": "Kauf"
+            },
+            "storage": {
+              "storageLocation": "Lagerort",
+              "installationLocation": "Aufstellort",
+              "condition": "Zustand",
+              "title": "Lager"
+            },
+            "quantity": "Anzahl",
+            "serialNumber": "Ordnungsnummer",
+            "type": "Gattung",
+            "uic": "UIC-Nummer"
           },
           "title": {
-            "create": "Aufgabe erstellen",
-            "edit": "Aufgabe bearbeiten"
+            "create": "Fahrzeug erstellen",
+            "edit": "Fahrzeug bearbeiten"
           }
         }
       },
-      "message": {
-        "error": {
-          "notFound": "Diese Aufgabe existiert nicht."
+      "dialog": {
+        "deleteVehicle": {
+          "button": {
+            "cancel": "Abbrechen",
+            "delete": "Löschen"
+          },
+          "message": "Bist du sicher, dass du dieses Fahrzeug löschen möchtest?",
+          "header": "Löschen"
+        },
+        "deleteVehicleDigitalAction": {
+          "button": {
+            "cancel": "Abbrechen",
+            "delete": "Löschen"
+          },
+          "message": "Bist du sicher, dass du diese Funktion löschen möchtest?",
+          "header": "Löschen"
+        },
+        "editImage": {
+          "button": {
+            "cancel": "Abbrechen",
+            "delete": "Löschen",
+            "open": "Öffnen"
+          }
+        },
+        "editInvoice": {
+          "button": {
+            "cancel": "Abbrechen",
+            "delete": "Löschen",
+            "open": "Öffnen"
+          }
+        },
+        "unsavedChanges": {
+          "button": {
+            "cancel": "Abbrechen",
+            "continue": "Fortfahren"
+          },
+          "message": "Du hast ungespeicherte Änderungen. Bist du sicher, dass du die Seite verlassen möchtest?",
+          "header": "Ungespeicherte Änderungen"
+        },
+        "upsertVehicleDigitalAction": {
+          "button": {
+            "cancel": "Abbrechen",
+            "save": "Speichern"
+          },
+          "label": {
+            "name": "Bezeichnung",
+            "num": "Nummer",
+            "value": "Wert"
+          },
+          "header": {
+            "create": "Funktion erstellen",
+            "edit": "Funktion bearbeiten"
+          }
+        },
+        "vehicleCategory": {
+          "label": {
+            "locomotive": "Lokomotive",
+            "railcar": "Triebwagen",
+            "wagon": "Wagen"
+          }
+        },
+        "vehicleCondition": {
+          "label": {
+            "new": "Neu",
+            "usedVeryGood": "Gebraucht - Sehr gut",
+            "usedGood": "Gebraucht - Gut",
+            "usedAcceptable": "Gebraucht - Akzeptabel"
+          }
+        },
+        "vehicleEpoch": {
+          "label": {
+            "i": "I",
+            "ii": "II",
+            "iii": "III",
+            "iv": "IV",
+            "v": "V",
+            "vi": "VI"
+          }
+        },
+        "vehicleModelAxles": {
+          "button": {
+            "cancel": "Cancel",
+            "save": "OK"
+          },
+          "header": "Achsen",
+          "label": {
+            "total": "Anzahl der Achsen",
+            "powered": "Anzahl der angetriebenen Achsen",
+            "tractioned": "Anzahl der Achsen mit Haftreifen"
+          }
         }
       }
     }

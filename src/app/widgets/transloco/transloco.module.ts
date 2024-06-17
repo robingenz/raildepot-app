@@ -13,8 +13,8 @@ import { TranslocoHttpLoader } from './transloco-loader';
   providers: [
     provideTransloco({
       config: {
-        availableLangs: ['en', 'de'],
-        defaultLang: 'en',
+        availableLangs: ['de'],
+        defaultLang: 'de',
         reRenderOnLangChange: true,
         prodMode: environment.production,
       },

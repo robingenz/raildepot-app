@@ -43,6 +43,6 @@ export class TaskListPageService {
   }
 
   public async navigateToTaskUpsertPage(taskId?: string): Promise<void> {
-    await this.routerService.navigateToTaskUpsertPage(taskId);
+    // await this.routerService.navigateToTaskUpsertPage(taskId);
   }
 }

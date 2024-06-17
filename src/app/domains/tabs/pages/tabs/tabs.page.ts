@@ -10,7 +10,7 @@ import {
 } from '@ionic/angular/standalone';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { addIcons } from 'ionicons';
-import { cog, fileTrayFull, home } from 'ionicons/icons';
+import { cog, home, train } from 'ionicons/icons';
 import { TabsPageService } from '../../services';
 
 @Component({
@@ -32,15 +32,15 @@ import { TabsPageService } from '../../services';
 })
 export class TabsPage {
   constructor(private readonly tabsPageService: TabsPageService) {
-    addIcons({ home, fileTrayFull, cog });
+    addIcons({ home, train, cog });
   }
 
   public async onNavigateToHomePage(): Promise<void> {
     await this.tabsPageService.navigateToHomePage();
   }
 
-  public async onNavigateToTaskListPage(): Promise<void> {
-    await this.tabsPageService.navigateToTaskListPage();
+  public async onNavigateToVehicleListPage(): Promise<void> {
+    await this.tabsPageService.navigateToVehicleListPage();
   }
 
   public async onNavigateToSettingsPage(): Promise<void> {

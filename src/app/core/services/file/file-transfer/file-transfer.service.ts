@@ -1,39 +1,69 @@
 import { Injectable } from '@angular/core';
-import { File, PlatformService } from '@app/core';
+import {
+  CapacitorFilesystemService,
+  File,
+  FileManagerService,
+  PlatformService,
+} from '@app/core';
+import { Directory } from '@capacitor/filesystem';
 
 export interface DownloadOptions {
-  id: string;
+  url: string;
+  path: string;
 }
 
 export interface DownloadResult {
   file: File;
 }
 
-export interface UploadOptions {
-  file: File;
-}
-
-export interface UploadResult {
-  id: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class FileTransferService {
-  constructor(private readonly platformService: PlatformService) {}
+  constructor(
+    private readonly platformService: PlatformService,
+    private readonly fileManagerService: FileManagerService,
+    private readonly capacitorFilesystemService: CapacitorFilesystemService,
+  ) {}
 
-  public download(options: DownloadOptions): Promise<DownloadResult> {
-    const isNative = this.platformService.isNative();
-    if (isNative) {
+  public async download(options: DownloadOptions): Promise<DownloadResult> {
+    const isCached = await this.isFileCached(options.path);
+    if (isCached) {
+      const file = await this.getFileFromCache(options.path);
+      return {
+        file,
+      };
     } else {
+      const result = await this.capacitorFilesystemService.downloadFile({
+        url: options.url,
+        path: options.path,
+        directory: Directory.Cache,
+      });
+      return {
+        file: {
+          blob: result.blob,
+          uri: result.path,
+        },
+      };
     }
   }
 
-  public upload(options: UploadOptions): Promise<UploadResult> {
+  private async getFileFromCache(path: string): Promise<File> {
     const isNative = this.platformService.isNative();
     if (isNative) {
+      const uri = await this.fileManagerService.getUri(path);
+      return {
+        uri,
+      };
     } else {
+      const blob = await this.fileManagerService.readFileAsBlob(path);
+      return {
+        blob,
+      };
     }
+  }
+
+  private async isFileCached(path: string): Promise<boolean> {
+    return this.fileManagerService.fileExists(path);
   }
 }

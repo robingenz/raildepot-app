@@ -96,7 +96,8 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 8100
+            "port": 8100,
+            "disableHostCheck": true
           }
         },
         "extract-i18n": {

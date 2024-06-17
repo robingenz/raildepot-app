@@ -67,9 +67,9 @@ export class TaskUpsertPageService {
   }
 
   public async navigateToTaskListPage(): Promise<void> {
-    await this.routerService.navigateToTaskListPage({
-      animationDirection: 'back',
-    });
+    // await this.routerService.navigateToTaskListPage({
+    //   animationDirection: 'back',
+    // });
   }
 
   public async presentUnsavedChangesAlert(): Promise<boolean> {

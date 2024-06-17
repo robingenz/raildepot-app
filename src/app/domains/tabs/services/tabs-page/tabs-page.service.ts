@@ -11,8 +11,8 @@ export class TabsPageService {
     await this.routerService.navigateToHomePage();
   }
 
-  public async navigateToTaskListPage(): Promise<void> {
-    await this.routerService.navigateToTaskListPage();
+  public async navigateToVehicleListPage(): Promise<void> {
+    await this.routerService.navigateToVehicleListPage();
   }
 
   public async navigateToSettingsPage(): Promise<void> {

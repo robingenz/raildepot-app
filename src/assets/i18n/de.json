@@ -26,6 +26,23 @@
         "message": "Du hast ungespeicherte Änderungen. Bist du sicher, dass du die Seite verlassen möchtest?",
         "header": "Ungespeicherte Änderungen"
       }
+    },
+    "message": {
+      "error": {
+        "firebase": {
+          "auth": {
+            "emailAlreadyInUse": "Die Email-Adresse wird bereits verwendet.",
+            "invalidCredential": "Die Anmeldeinformationen sind ungültig.",
+            "invalidEmail": "Die Email-Adresse ist ungültig.",
+            "popupClosedByUser": "Der Vorgang wurde abgebrochen.",
+            "requiresRecentLogin": "Dieser Vorgang ist sensibel und erfordert eine kürzliche Anmeldung. Melden Sie sich erneut an, bevor Sie diesen Vorgang erneut versuchen.",
+            "unauthorizedDomain": "Diese Domain ist nicht berechtigt, diesen Vorgang auszuführen. Fügen Sie sie zur Liste der autorisierten Domains in der Firebase-Konsole hinzu.",
+            "userNotFound": "Die Email-Adresse ist nicht registriert.",
+            "weakPassword": "Das Passwort ist nicht stark genug. Bitte verwenden Sie mindestens 6 Zeichen.",
+            "wrongPassword": "Das Passwort ist nicht korrekt."
+          }
+        }
+      }
     }
   },
   "domain": {

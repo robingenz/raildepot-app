@@ -29,12 +29,34 @@ export class RouterService {
     });
   }
 
-  public navigateToRootPage(options?: NavigationOptions): Promise<boolean> {
-    return this.navigateForward(['/'], options);
+  public navigateToForgotPasswordPage(
+    options?: NavigationOptions,
+  ): Promise<boolean> {
+    return this.navigateForward(['/forgot-password'], options);
   }
 
   public navigateToHomePage(options?: NavigationOptions): Promise<boolean> {
     return this.navigateForward(['/home'], options);
+  }
+
+  public navigateToLoginPage(options?: NavigationOptions): Promise<boolean> {
+    return this.navigateForward(['/login'], options);
+  }
+
+  public navigateToProfilePage(options?: NavigationOptions): Promise<boolean> {
+    return this.navigateForward(['/profile'], options);
+  }
+
+  public navigateToRootPage(options?: NavigationOptions): Promise<boolean> {
+    return this.navigateForward(['/'], options);
+  }
+
+  public navigateToRegisterPage(options?: NavigationOptions): Promise<boolean> {
+    return this.navigateForward(['/register'], options);
+  }
+
+  public navigateToSettingsPage(options?: NavigationOptions): Promise<boolean> {
+    return this.navigateForward(['/settings'], options);
   }
 
   public navigateToVehicleListPage(
@@ -52,10 +74,6 @@ export class RouterService {
     } else {
       return this.navigateForward(['vehicles', 'create'], options);
     }
-  }
-
-  public navigateToSettingsPage(options?: NavigationOptions): Promise<boolean> {
-    return this.navigateForward(['/settings'], options);
   }
 
   private navigateForward(

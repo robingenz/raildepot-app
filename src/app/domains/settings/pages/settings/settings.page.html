@@ -16,7 +16,7 @@
   </ion-header>
   @if (isUpdateAvailable$ | async) {
     <ion-list [inset]="true">
-      <ion-item button detail="true" (click)="presentUpdateAvailableAlert()">
+      <ion-item button detail="true" (click)="onPresentUpdateAvailableAlert()">
         <ion-icon name="arrow-up-circle-outline" slot="start"></ion-icon>
         <ion-label>{{
           "domain.settings.page.settings.button.updateAvailable" | transloco
@@ -34,6 +34,20 @@
       </ion-item>
     </ion-list>
   }
+  <ion-list [inset]="true">
+    <ion-item button detail="true" (click)="onNavigateToProfilePage()">
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>{{
+        "domain.settings.page.settings.button.profile" | transloco
+      }}</ion-label>
+    </ion-item>
+    <ion-item button detail="true" (click)="onSignOut()">
+      <ion-icon name="log-out" slot="start"></ion-icon>
+      <ion-label>{{
+        "domain.settings.page.settings.button.logout" | transloco
+      }}</ion-label>
+    </ion-item>
+  </ion-list>
   <ion-list [inset]="true">
     <!-- <ion-item button detail="false" (click)="onPresentLanguageActionSheet()">
       <ion-icon name="language" slot="start"></ion-icon>

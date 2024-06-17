@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
   DialogService,
+  FirebaseAuthenticationService,
   LiveUpdateService,
   ModeService,
   PlatformService,
   PurchasesService,
+  RouterService,
   ThemeService,
 } from '@app/core';
 import { Mode, Theme } from '@app/store';
@@ -26,6 +28,8 @@ export class SettingsPageService {
     private readonly platformService: PlatformService,
     private readonly purchasesService: PurchasesService,
     private readonly liveUpdateService: LiveUpdateService,
+    private readonly routerService: RouterService,
+    private readonly firebaseAuthenticationService: FirebaseAuthenticationService,
   ) {}
 
   public get hasActiveEntitlement$(): Observable<boolean> {
@@ -52,12 +56,8 @@ export class SettingsPageService {
     return this.themeService.theme$;
   }
 
-  public async presentPurchaseModal(): Promise<void> {
-    const presentingElement = this.getPresentingElement();
-    await this.dialogService.presentModal({
-      component: PurchasesModalComponent,
-      presentingElement,
-    });
+  public async navigateToProfilePage(): Promise<void> {
+    await this.routerService.navigateToProfilePage();
   }
 
   public async presentLanguageActionSheet(): Promise<void> {
@@ -148,6 +148,51 @@ export class SettingsPageService {
           ),
           handler: (): void => {
             this.setTheme(Theme.Dark);
+          },
+        },
+      ],
+    });
+  }
+
+  public async presentPurchaseModal(): Promise<void> {
+    const presentingElement = this.getPresentingElement();
+    await this.dialogService.presentModal({
+      component: PurchasesModalComponent,
+      presentingElement,
+    });
+  }
+
+  public async presentSignOutAlert(): Promise<void> {
+    const alertElement = await this.dialogService.presentAlert({
+      header: this.translocoService.translate(
+        'domain.settings.dialog.logout.header',
+      ),
+      message: this.translocoService.translate(
+        'domain.settings.dialog.logout.message',
+      ),
+      buttons: [
+        {
+          text: this.translocoService.translate(
+            'domain.settings.dialog.logout.button.cancel',
+          ),
+          role: 'cancel',
+        },
+        {
+          text: this.translocoService.translate(
+            'domain.settings.dialog.logout.button.logout',
+          ),
+          role: 'destructive',
+          handler: async (): Promise<void> => {
+            await alertElement.dismiss();
+            const loadingElement = await this.dialogService.presentLoading();
+            try {
+              await this.firebaseAuthenticationService.signOut();
+            } finally {
+              await loadingElement.dismiss();
+            }
+            await this.routerService.navigateToLoginPage({
+              replaceUrl: true,
+            });
           },
         },
       ],

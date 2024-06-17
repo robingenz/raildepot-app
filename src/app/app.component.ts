@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  FirebaseAppService,
   LiveUpdateService,
   PurchasesService,
   RouterService,
@@ -23,6 +24,7 @@ export class AppComponent {
     private readonly purchasesService: PurchasesService,
     private readonly liveUpdateService: LiveUpdateService,
     private readonly splashScreenService: SplashScreenService,
+    private readonly firebaseAppService: FirebaseAppService,
   ) {
     this.initialize();
   }
@@ -30,6 +32,7 @@ export class AppComponent {
   private initialize(): void {
     this.liveUpdateService.initialize();
     this.routerService.initialize();
+    this.firebaseAppService.initialize();
     this.themeService.initialize();
     void this.purchasesService.initialize();
     void this.splashScreenService.hide();

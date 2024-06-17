@@ -20,6 +20,8 @@ import {
   documentText,
   informationCircle,
   language,
+  logOut,
+  person,
   phonePortrait,
   star,
   sunny,
@@ -76,14 +78,24 @@ export class SettingsPage {
   constructor(private readonly settingsPageService: SettingsPageService) {
     addIcons({
       arrowUpCircleOutline,
-      language,
-      phonePortrait,
-      sunny,
+      chatbox,
       documentText,
       informationCircle,
-      chatbox,
+      language,
+      logOut,
+      person,
+      phonePortrait,
       star,
+      sunny,
     });
+  }
+
+  public async onNavigateToProfilePage(): Promise<void> {
+    await this.settingsPageService.navigateToProfilePage();
+  }
+
+  public async onPresentLanguageActionSheet(): Promise<void> {
+    await this.settingsPageService.presentLanguageActionSheet();
   }
 
   public async onPresentModeActionSheet(): Promise<void> {
@@ -94,20 +106,20 @@ export class SettingsPage {
     await this.settingsPageService.presentThemeActionSheet();
   }
 
-  public async onPresentLanguageActionSheet(): Promise<void> {
-    await this.settingsPageService.presentLanguageActionSheet();
+  public async onPresentUpdateAvailableAlert(): Promise<void> {
+    await this.settingsPageService.presentUpdateAvailableAlert();
   }
 
   public async onPresentVersionActionSheet(): Promise<void> {
     await this.settingsPageService.presentVersionActionSheet();
   }
 
-  public async presentUpdateAvailableAlert(): Promise<void> {
-    await this.settingsPageService.presentUpdateAvailableAlert();
-  }
-
   public async onPresentPurchaseModal(): Promise<void> {
     await this.settingsPageService.presentPurchaseModal();
+  }
+
+  public async onSignOut(): Promise<void> {
+    await this.settingsPageService.presentSignOutAlert();
   }
 
   public onSubmitFeedback(email: string): Promise<void> {

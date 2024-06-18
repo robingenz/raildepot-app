@@ -1,0 +1,29 @@
+:host-context(body:not(.dark)) {
+  ion-content {
+    --background: var(--ion-color-light);
+  }
+}
+
+:host-context(.ios body:not(.dark)) {
+  ion-toolbar {
+    --background: var(--ion-color-light);
+  }
+}
+
+.thumbnail-item {
+  --padding-start: 0px;
+  --inner-padding-end: 0px;
+}
+
+.thumbnail-item {
+  ion-img,
+  ion-spinner {
+    margin: 0 auto;
+  }
+
+  ion-img {
+    max-height: 200px;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -13,9 +13,7 @@ export interface FindAllVehiclesDto {
   offset?: number;
 }
 
-export interface UpdateVehicleDto extends CreateVehicleDto {
-  id: string;
-}
+export type UpdateVehicleDto = CreateVehicleDto;
 
 export interface VehicleDto {
   id: string;
@@ -121,9 +119,9 @@ export class ApiVehiclesService {
     return lastValueFrom(response$);
   }
 
-  public updateById(dto: UpdateVehicleDto): Promise<void> {
+  public updateById(id: string, dto: UpdateVehicleDto): Promise<void> {
     const response$ = this.httpClient.put<void>(
-      environment.apiBaseUrl + this.urlPath + '/' + dto.id,
+      environment.apiBaseUrl + this.urlPath + '/' + id,
       dto,
     );
     return lastValueFrom(response$);

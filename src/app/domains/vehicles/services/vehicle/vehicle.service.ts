@@ -17,9 +17,7 @@ export type CreateVehicleOptions = Omit<
   Vehicle,
   'id' | 'createdAt' | 'createdBy' | 'updatedAt' | 'updatedBy' | 'deletedAt'
 >;
-export interface UpdateVehicleOptions extends CreateVehicleOptions {
-  id: string;
-}
+export type UpdateVehicleOptions = CreateVehicleOptions;
 export type FindAllVehiclesOptions = FindAllVehiclesDto;
 
 @Injectable({
@@ -47,8 +45,11 @@ export class VehicleService {
     return this.convertVehicleDtoToVehicle(dto);
   }
 
-  public async updateById(options: UpdateVehicleOptions): Promise<void> {
-    return this.apiVehiclesService.updateById(options);
+  public async updateById(
+    id: string,
+    options: UpdateVehicleOptions,
+  ): Promise<void> {
+    return this.apiVehiclesService.updateById(id, options);
   }
 
   private convertVehicleToCreateVehicleDto(

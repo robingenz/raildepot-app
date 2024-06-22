@@ -1,3 +1,4 @@
+import { File } from '@app/core';
 import {
   VehicleCategory,
   VehicleCondition,
@@ -15,15 +16,11 @@ export interface Vehicle {
     decoderAddress: number | null;
     decoderName: string | null;
   };
-  imageFileIds: string[] | null;
+  images: File[] | null;
   inventoryNumber: string | null;
   model: {
     articleNumber: string | null;
-    axles: {
-      total: number | null;
-      powered: number | null;
-      tractioned: number | null;
-    };
+    axles: VehicleModelAxles;
     epoch: VehicleEpoch | null;
     gauge: VehicleGauge | null;
     hasLight: boolean | null;
@@ -41,7 +38,7 @@ export interface Vehicle {
   purchase: {
     date: string | null;
     invoiceNumber: string | null;
-    invoiceFileId: string | null;
+    invoice: File | null;
     location: string | null;
     msrp: number | null;
     price: number | null;
@@ -60,4 +57,10 @@ export interface Vehicle {
   updatedAt: string;
   updatedBy: string;
   deletedAt: string | null;
+}
+
+export interface VehicleModelAxles {
+  total: number | null;
+  powered: number | null;
+  tractioned: number | null;
 }

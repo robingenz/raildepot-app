@@ -42,7 +42,7 @@ export class FileTransferService {
       return {
         file: {
           blob: result.blob,
-          uri: result.path,
+          path: result.path,
         },
       };
     }
@@ -53,7 +53,7 @@ export class FileTransferService {
     if (isNative) {
       const uri = await this.fileManagerService.getUri(path);
       return {
-        uri,
+        path: uri,
       };
     } else {
       const blob = await this.fileManagerService.readFileAsBlob(path);

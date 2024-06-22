@@ -74,7 +74,7 @@ export class ApiFilesService {
 
   public async download(dto: DownloadFileDto): Promise<DownloadFileResult> {
     const file = await this.findOneById(dto.id);
-    const path = `files/${dto.id}/${file.name}.${file.extension}`;
+    const path = `files/${dto.id}/${file.name}.${file.extension}`; // -> FileHelperService
     const url =
       environment.apiBaseUrl + this.urlPath + '/' + dto.id + '/download';
     return this.fileTransferService.download({

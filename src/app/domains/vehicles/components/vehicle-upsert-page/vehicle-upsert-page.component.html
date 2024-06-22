@@ -2,19 +2,17 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button
-        defaultHref="/vehicles"
+        [defaultHref]="'/vehicles'"
         [text]="'Zurück'"
       ></ion-back-button>
     </ion-buttons>
     <ion-title>{{
-      documentId
-        ? ("vehicles.page.upsert.title.edit" | transloco)
-        : ("vehicles.page.upsert.title.create" | transloco)
+      vehicleId
+        ? ("domain.vehicles.page.upsert.title.edit" | transloco)
+        : ("domain.vehicles.page.upsert.title.create" | transloco)
     }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button
-        [disabled]="!form.valid || !form.dirty"
-        (click)="saveChanges()"
+      <ion-button [disabled]="!form.valid || !form.dirty" (click)="onSubmit()"
         >Speichern</ion-button
       >
     </ion-buttons>
@@ -25,27 +23,27 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{
-        documentId
-          ? ("vehicles.page.upsert.title.edit" | transloco)
-          : ("vehicles.page.upsert.title.create" | transloco)
+        vehicleId
+          ? ("domain.vehicles.page.upsert.title.edit" | transloco)
+          : ("domain.vehicles.page.upsert.title.create" | transloco)
       }}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <form [formGroup]="form" (ngSubmit)="saveChanges()">
-    @if (imagesFormControl.value ?? []; as imageFileIds) {
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    @if (imagesFormControl.value ?? [] | undeletedFiles; as images) {
       <ion-list [inset]="true">
-        @if (imageFileIds[0]; as firstImageFileId) {
+        @if (images[0]; as firstImage) {
           <ion-item
             class="thumbnail-item"
-            (click)="presentEditImageActionSheet(firstImageFileId)"
+            (click)="onPresentEditImageActionSheet(firstImage)"
           >
-            <ion-img [src]="firstImageFileId | fileSource | async"></ion-img>
+            <ion-img [src]="firstImage | fileSource | async"></ion-img>
           </ion-item>
         } @else {
-          <ion-item button (click)="pickImage()" [detail]="false">
+          <ion-item button (click)="onPickImage()" [detail]="false">
             <ion-icon name="add" slot="start"></ion-icon>
             <ion-label>{{
-              "vehicles.page.upsert.button.image.add" | transloco
+              "domain.vehicles.page.upsert.button.image.add" | transloco
             }}</ion-label>
           </ion-item>
         }
@@ -55,28 +53,32 @@
       <ion-item>
         <ion-input
           formControlName="name"
-          [label]="'vehicles.page.upsert.label.name' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.name' | transloco"
           labelPlacement="floating"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input
           formControlName="additionalName"
-          [label]="'vehicles.page.upsert.label.additionalName' | transloco"
+          [label]="
+            'domain.vehicles.page.upsert.label.additionalName' | transloco
+          "
           labelPlacement="floating"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input
           formControlName="inventoryNumber"
-          [label]="'vehicles.page.upsert.label.inventoryNumber' | transloco"
+          [label]="
+            'domain.vehicles.page.upsert.label.inventoryNumber' | transloco
+          "
           labelPlacement="floating"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input
           formControlName="quantity"
-          [label]="'vehicles.page.upsert.label.quantity' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.quantity' | transloco"
           labelPlacement="floating"
           type="number"
         ></ion-input>
@@ -84,7 +86,7 @@
       <ion-item>
         <ion-select
           formControlName="category"
-          [label]="'vehicles.page.upsert.label.category' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.category' | transloco"
           labelPlacement="floating"
         >
           @for (item of categories | keyvalue: originalOrder; track item) {
@@ -97,21 +99,21 @@
       <ion-item>
         <ion-input
           formControlName="type"
-          [label]="'vehicles.page.upsert.label.type' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.type' | transloco"
           labelPlacement="floating"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input
           formControlName="company"
-          [label]="'vehicles.page.upsert.label.company' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.company' | transloco"
           labelPlacement="floating"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-input
           formControlName="classNumber"
-          [label]="'vehicles.page.upsert.label.classNumber' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.classNumber' | transloco"
           labelPlacement="floating"
           type="number"
         ></ion-input>
@@ -119,7 +121,7 @@
       <ion-item>
         <ion-input
           formControlName="serialNumber"
-          [label]="'vehicles.page.upsert.label.serialNumber' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.serialNumber' | transloco"
           labelPlacement="floating"
           type="number"
         ></ion-input>
@@ -127,14 +129,14 @@
       <ion-item>
         <ion-input
           formControlName="uic"
-          [label]="'vehicles.page.upsert.label.uic' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.uic' | transloco"
           labelPlacement="floating"
         ></ion-input>
       </ion-item>
       <ion-item>
         <ion-textarea
           formControlName="note"
-          [label]="'vehicles.page.upsert.label.note' | transloco"
+          [label]="'domain.vehicles.page.upsert.label.note' | transloco"
           labelPlacement="floating"
           [counter]="true"
           [maxlength]="1000"
@@ -147,7 +149,7 @@
         <ion-accordion value="first">
           <ion-item slot="header">
             <ion-label>{{
-              "vehicles.page.upsert.label.model.title" | transloco
+              "domain.vehicles.page.upsert.label.model.title" | transloco
             }}</ion-label>
           </ion-item>
           <div slot="content">
@@ -155,7 +157,8 @@
               <ion-input
                 formControlName="manufacturer"
                 [label]="
-                  'vehicles.page.upsert.label.model.manufacturer' | transloco
+                  'domain.vehicles.page.upsert.label.model.manufacturer'
+                    | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
@@ -164,7 +167,8 @@
               <ion-input
                 formControlName="articleNumber"
                 [label]="
-                  'vehicles.page.upsert.label.model.articleNumber' | transloco
+                  'domain.vehicles.page.upsert.label.model.articleNumber'
+                    | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
@@ -173,7 +177,8 @@
               <ion-input
                 formControlName="serialNumber"
                 [label]="
-                  'vehicles.page.upsert.label.model.serialNumber' | transloco
+                  'domain.vehicles.page.upsert.label.model.serialNumber'
+                    | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
@@ -181,7 +186,9 @@
             <ion-item>
               <ion-select
                 formControlName="gauge"
-                [label]="'vehicles.page.upsert.label.model.gauge' | transloco"
+                [label]="
+                  'domain.vehicles.page.upsert.label.model.gauge' | transloco
+                "
                 labelPlacement="floating"
               >
                 @for (item of gauges | keyvalue: originalOrder; track item) {
@@ -194,7 +201,9 @@
             <ion-item>
               <ion-select
                 formControlName="epoch"
-                [label]="'vehicles.page.upsert.label.model.epoch' | transloco"
+                [label]="
+                  'domain.vehicles.page.upsert.label.model.epoch' | transloco
+                "
                 labelPlacement="floating"
               >
                 @for (item of epochs | keyvalue: originalOrder; track item) {
@@ -207,7 +216,9 @@
             <ion-item>
               <ion-input
                 formControlName="weight"
-                [label]="'vehicles.page.upsert.label.model.weight' | transloco"
+                [label]="
+                  'domain.vehicles.page.upsert.label.model.weight' | transloco
+                "
                 labelPlacement="floating"
                 type="number"
               ></ion-input>
@@ -215,14 +226,18 @@
             <ion-item>
               <ion-input
                 formControlName="length"
-                [label]="'vehicles.page.upsert.label.model.length' | transloco"
+                [label]="
+                  'domain.vehicles.page.upsert.label.model.length' | transloco
+                "
                 labelPlacement="floating"
                 type="number"
               ></ion-input>
             </ion-item>
-            <ion-item button (click)="presentVehicleModelAxlesAlert()">
+            <ion-item button (click)="onPresentVehicleModelAxlesAlert()">
               <ion-label>
-                {{ "vehicles.page.upsert.label.model.axles" | transloco }}
+                {{
+                  "domain.vehicles.page.upsert.label.model.axles" | transloco
+                }}
               </ion-label>
               @if (
                 modelAxlesTotalFormControl.value ??
@@ -238,27 +253,28 @@
             </ion-item>
             <ion-item>
               <ion-toggle formControlName="hasSound">{{
-                "vehicles.page.upsert.label.model.hasSound" | transloco
+                "domain.vehicles.page.upsert.label.model.hasSound" | transloco
               }}</ion-toggle>
             </ion-item>
             <ion-item>
               <ion-toggle formControlName="hasLight">{{
-                "vehicles.page.upsert.label.model.hasLight" | transloco
+                "domain.vehicles.page.upsert.label.model.hasLight" | transloco
               }}</ion-toggle>
             </ion-item>
             <ion-item>
               <ion-toggle formControlName="hasSmoke">{{
-                "vehicles.page.upsert.label.model.hasSmoke" | transloco
+                "domain.vehicles.page.upsert.label.model.hasSmoke" | transloco
               }}</ion-toggle>
             </ion-item>
             <ion-item>
               <ion-toggle formControlName="hasOriginalBox">{{
-                "vehicles.page.upsert.label.model.hasOriginalBox" | transloco
+                "domain.vehicles.page.upsert.label.model.hasOriginalBox"
+                  | transloco
               }}</ion-toggle>
             </ion-item>
             <ion-item>
               <ion-toggle formControlName="isLimited">{{
-                "vehicles.page.upsert.label.model.isLimited" | transloco
+                "domain.vehicles.page.upsert.label.model.isLimited" | transloco
               }}</ion-toggle>
             </ion-item>
           </div>
@@ -270,7 +286,7 @@
         <ion-accordion value="first">
           <ion-item slot="header">
             <ion-label>{{
-              "vehicles.page.upsert.label.digital.title" | transloco
+              "domain.vehicles.page.upsert.label.digital.title" | transloco
             }}</ion-label>
           </ion-item>
           <div slot="content">
@@ -278,7 +294,8 @@
               <ion-input
                 formControlName="decoderName"
                 [label]="
-                  'vehicles.page.upsert.label.digital.decoder' | transloco
+                  'domain.vehicles.page.upsert.label.digital.decoder'
+                    | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
@@ -286,7 +303,7 @@
             <!-- <ion-item>
                     <ion-input
                 [label]="
-                  'vehicles.page.upsert.label.digital.interface' | transloco
+                  'domain.vehicles.page.upsert.label.digital.interface' | transloco
                 "
                       labelPlacement="floating"
                     ></ion-input>
@@ -294,7 +311,7 @@
                   <ion-item>
                     <ion-input
                 [label]="
-                  'vehicles.page.upsert.label.digital.protocol' | transloco
+                  'domain.vehicles.page.upsert.label.digital.protocol' | transloco
                 "
                       labelPlacement="floating"
                     ></ion-input>
@@ -303,23 +320,24 @@
               <ion-input
                 formControlName="decoderAddress"
                 [label]="
-                  'vehicles.page.upsert.label.digital.address' | transloco
+                  'domain.vehicles.page.upsert.label.digital.address'
+                    | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
             </ion-item>
-            <ion-item
+            <!-- <ion-item
               button
               [detail]="true"
               (click)="presentVehicleDigitalActionListModal()"
             >
               <ion-label>{{
-                "vehicles.page.upsert.label.digital.actions" | transloco
+                "domain.vehicles.page.upsert.label.digital.actions" | transloco
               }}</ion-label>
               <ion-note slot="end">{{
                 digitalActionsFormControl.value?.length ?? 0
               }}</ion-note>
-            </ion-item>
+            </ion-item> -->
           </div>
         </ion-accordion>
       </ion-accordion-group>
@@ -329,16 +347,16 @@
         <ion-accordion value="first">
           <ion-item slot="header">
             <ion-label>{{
-              "vehicles.page.upsert.label.purchase.title" | transloco
+              "domain.vehicles.page.upsert.label.purchase.title" | transloco
             }}</ion-label>
           </ion-item>
           <div slot="content">
             <ion-item
               [detail]="!purchaseDateFormControl.value"
-              (click)="openPurchaseDateModal()"
+              (click)="onOpenPurchaseDateModal()"
             >
               <ion-label>{{
-                "vehicles.page.upsert.label.purchase.date" | transloco
+                "domain.vehicles.page.upsert.label.purchase.date" | transloco
               }}</ion-label>
               <ion-datetime-button
                 [style.visibility]="
@@ -349,7 +367,7 @@
               <ion-modal
                 [keepContentsMounted]="true"
                 [isOpen]="isPurchaseDateModalOpen"
-                (didDismiss)="closePurchaseDateModal()"
+                (didDismiss)="onClosePurchaseDateModal()"
               >
                 <ng-template>
                   <ion-datetime
@@ -364,10 +382,10 @@
                         (click)="
                           datetime.reset();
                           datetime.cancel(true);
-                          deletePurchaseDate()
+                          onDeletePurchaseDate()
                         "
                         >{{
-                          "vehicles.page.upsert.button.purchase.date.delete"
+                          "domain.vehicles.page.upsert.button.purchase.date.delete"
                             | transloco
                         }}</ion-button
                       >
@@ -376,7 +394,7 @@
                         (click)="datetime.cancel(true)"
                       >
                         {{
-                          "vehicles.page.upsert.button.purchase.date.cancel"
+                          "domain.vehicles.page.upsert.button.purchase.date.cancel"
                             | transloco
                         }}
                       </ion-button>
@@ -385,7 +403,7 @@
                         (click)="datetime.confirm(true)"
                       >
                         {{
-                          "vehicles.page.upsert.button.purchase.date.confirm"
+                          "domain.vehicles.page.upsert.button.purchase.date.confirm"
                             | transloco
                         }}
                       </ion-button>
@@ -398,7 +416,8 @@
               <ion-input
                 formControlName="location"
                 [label]="
-                  'vehicles.page.upsert.label.purchase.location' | transloco
+                  'domain.vehicles.page.upsert.label.purchase.location'
+                    | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
@@ -407,7 +426,7 @@
               <ion-input
                 formControlName="price"
                 [label]="
-                  'vehicles.page.upsert.label.purchase.price' | transloco
+                  'domain.vehicles.page.upsert.label.purchase.price' | transloco
                 "
                 labelPlacement="floating"
                 type="number"
@@ -416,7 +435,9 @@
             <ion-item>
               <ion-input
                 formControlName="msrp"
-                [label]="'vehicles.page.upsert.label.purchase.msrp' | transloco"
+                [label]="
+                  'domain.vehicles.page.upsert.label.purchase.msrp' | transloco
+                "
                 labelPlacement="floating"
                 type="number"
               ></ion-input>
@@ -425,29 +446,34 @@
               <ion-input
                 formControlName="invoiceNumber"
                 [label]="
-                  'vehicles.page.upsert.label.purchase.invoiceNumber'
+                  'domain.vehicles.page.upsert.label.purchase.invoiceNumber'
                     | transloco
                 "
                 labelPlacement="floating"
               ></ion-input>
             </ion-item>
-            @if (invoiceFileIdFormControl.value ?? []; as invoiceFileId) {
+            @if (
+              purchaseInvoicesFormControl.value ?? [] | undeletedFiles;
+              as invoices
+            ) {
               <ion-item
+                *appLet="invoices[0] as firstInvoice"
                 button
                 (click)="
-                  invoiceFileId
-                    ? presentEditInvoiceActionSheet(invoiceFileId)
-                    : pickInvoice()
+                  firstInvoice
+                    ? onPresentEditInvoiceActionSheet(firstInvoice)
+                    : onPickInvoice()
                 "
               >
                 <ion-label>
                   {{
-                    "vehicles.page.upsert.label.purchase.invoice" | transloco
+                    "domain.vehicles.page.upsert.label.purchase.invoice"
+                      | transloco
                   }}
                 </ion-label>
-                @if (invoiceFileId) {
+                @if (firstInvoice) {
                   <ion-label slot="end">
-                    {{ invoiceFileId.fileName }}
+                    {{ firstInvoice.name }}
                   </ion-label>
                 }
               </ion-item>
@@ -461,7 +487,7 @@
         <ion-accordion value="first">
           <ion-item slot="header">
             <ion-label>{{
-              "vehicles.page.upsert.label.storage.title" | transloco
+              "domain.vehicles.page.upsert.label.storage.title" | transloco
             }}</ion-label>
           </ion-item>
           <div slot="content">
@@ -469,7 +495,7 @@
               <ion-input
                 formControlName="storageLocation"
                 [label]="
-                  'vehicles.page.upsert.label.storage.storageLocation'
+                  'domain.vehicles.page.upsert.label.storage.storageLocation'
                     | transloco
                 "
                 labelPlacement="floating"
@@ -479,7 +505,7 @@
               <ion-input
                 formControlName="installationLocation"
                 [label]="
-                  'vehicles.page.upsert.label.storage.installationLocation'
+                  'domain.vehicles.page.upsert.label.storage.installationLocation'
                     | transloco
                 "
                 labelPlacement="floating"
@@ -489,7 +515,8 @@
               <ion-select
                 formControlName="condition"
                 [label]="
-                  'vehicles.page.upsert.label.storage.condition' | transloco
+                  'domain.vehicles.page.upsert.label.storage.condition'
+                    | transloco
                 "
                 labelPlacement="floating"
               >
@@ -507,15 +534,15 @@
         </ion-accordion>
       </ion-accordion-group>
     </ion-list>
-    @if (this.documentId) {
+    @if (this.vehicleId) {
       <div class="ion-padding-horizontal">
         <ion-button
           expand="block"
           fill="clear"
           color="danger"
-          (click)="presentDeleteVehicleAlert()"
+          (click)="onPresentDeleteVehicleAlert()"
         >
-          {{ "vehicles.page.upsert.button.delete" | transloco }}
+          {{ "domain.vehicles.page.upsert.button.delete" | transloco }}
         </ion-button>
       </div>
     }
